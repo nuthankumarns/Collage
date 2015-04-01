@@ -1,0 +1,253 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+		<script type='text/javascript' src='js/jquery.min.js'></script>
+		<script src="js/kinetic-v3.9.3.js"></script>
+		<script type="text/javascript" src="js/valentine.js"></script>
+		<title>HTML 5 Image Editor | Using Kinetic.js And Canvas Tag</title>
+		<meta name="description" content="" />
+		<meta name="author" content="Nuthan" />
+		<link href="css/layout.css" rel="stylesheet" type="text/css"/>
+		<link rel="stylesheet" href="css/menu.css" type="text/css" media="screen" />
+		<!-- Menu -->
+		<!--[if lt IE 9]>
+		<link rel="stylesheet" type="text/css" href="css/ie/ie.css" />
+		<![endif]-->
+		<link rel="stylesheet" href="css/" type="text/css" media="screen" />
+		<script type="text/javascript" src="js/jquery.js"></script>
+		<script type="text/javascript" src="js/mobile.js"></script>
+		<script type="text/javascript" src="js/form.js"></script>
+		<script type="text/javascript">
+			$(document).ready(function() {
+				$("#spinner").bind("ajaxSend", function() {
+					$(this).show();
+				}).bind("ajaxStop", function() {
+					$(this).hide();
+				}).bind("ajaxError", function() {
+					$(this).hide();
+				});
+
+				$("#button").click(function() {
+					$("#editor").slideToggle("slow");
+				});
+				/*	$("#button").click(function() {
+				 if ($(this).val() == "Hide") {
+				 $(this).val("Show");
+				 $("#container").animate({
+				 width : '100%'
+				 });
+				 $("#editor").animate({
+				 width : '0px'
+				 });
+				 } else {
+				 $(this).val("Hide");
+				 $("#container").animate({
+				 width : '100%'
+				 });
+				 $("#editor").animate({
+				 width : '20%'
+				 });
+				 }
+				 });*/
+
+			});
+		</script>
+		<body>
+			<script type="text/javascript">
+				$(document).ready(function() {
+					$(document).mousemove(function() {
+						$("#submit").removeAttr("disabled", "disabled");
+					});
+					$(document).on('touchend', function() {
+						$("#submit").removeAttr("disabled", "disabled");
+					});
+				});
+			</script>
+
+	</head>
+	<body>
+
+		<!--nav-->
+		<div id="content">
+			<p id="textcount" style="position:absolute; left: 0px; visibility:hidden;font-size:30pt;"></p>
+			<header>
+				Unity-3D
+			</header>
+			<div id="instructions">
+				<h3>Instructions Will Show Below. Add Text With The Text Box On The Right, Add Extra Images By Clicking Images Below The Canvas</h3>
+
+			</div>
+			<div id="controls">
+				<input type="button" id="button" value="Text Overlay"/>
+				<input type="submit" id="preview" value="Preview"/>
+				<input type="submit" id="save" value="Save"/>
+				<!--<input type="button" id="background" value="Background"/>-->
+
+				<input type="file" name="img" size="5" id="uploadimage" />
+				<button id='addImg' value="Upload" >
+					Upload
+				</button>
+			</div>
+			<br>
+			<br>
+			<br>
+
+			<p id="textcount" style="position:absolute; left: 0px; visibility:hidden;font-size:30pt;"></p>
+			<div id="container" style=""></div>
+
+			<br>
+			<div id="editor">
+				<ul id="text" style=" margin-right:10px;">
+					<h4>Text Preview</h4>
+					<div id="spinner" class="spinner" style="display:none;margin-left:80px;margin-bottom:20px;">
+						Image Uploading<img src="images/ajax.gif" alt="loading">
+					</div>
+					<div id="container2" style="width:140px;"></div>
+					<li>
+						<label>Text: </label>
+						<input type="text" id="texts" placeholder="Add Text Here"/>
+					</li>
+					<li>
+						<label>Font Family: </label>
+						<select id="fontfam">
+							<option>Calibri</option>
+							<option>Arial</option>
+							<option>Verdana</option>
+							<option>Impact</option>
+							<option>Serif</option>
+							<option>Monospace</option>
+							<option>Helvetica</option>
+							<option>Tahoma</option>
+							<option>Gadget</option>
+						</select>
+					</li>
+					<li>
+						<label>Font Colour: </label>
+						<select id="colour">
+							<option>Black</option>
+							<option>Red</option>
+							<option>Blue</option>
+							<option>Green</option>
+							<option>White</option>
+							<option>Yellow</option>
+							<option>Pink</option>
+							<option>Gray</option>
+							<option>Purple</option>
+							<option>Silver</option>
+							<option>Gold</option>
+							<option>Orange</option>
+						</select>
+					</li>
+					<li>
+						<label>Text Stroke Colour</label>
+						<select id="textstroke">
+							<option>transparent</option>
+							<option>White</option>
+							<option>Black</option>
+							<option>Red</option>
+							<option>Blue</option>
+							<option>Green</option>
+							<option>Yellow</option>
+							<option>Pink</option>
+							<option>Gray</option>
+							<option>Purple</option>
+							<option>Silver</option>
+							<option>Gold</option>
+							<option>Orange</option>
+						</select>
+					</li>
+					<li>
+						<label>&nbsp;</label>
+						<input type="submit" id="textsubmit" value="Add Text"/>
+					</li>
+				</ul>
+			</div>
+
+			<p class="clearing" ></p>
+			<hr>
+			<h1>Sample Images</h1>
+			<ul id="img">
+				<li>
+					<a href="#"><img src="images/heart.png" id="i1" alt="heart" width="106" height="118" /></a>
+				</li>
+				<li>
+					<a href="#"><img src="images/balloon.png" id="i2" alt="balloon" width="106" height="118" /></a>
+				</li>
+				<li>
+					<a href="#"><img src="images/caterpillar3.png" id="i14" alt="caterpilla" width="106" height="118" /></a>
+				</li>
+				<li>
+					<a href="#"><img src="images/Bears_1.png" id="i3" alt="Bear" width="106" height="118" /></a>
+				</li>
+				<li>
+					<a href="#"><img src="images/Bears_2.png" id="i4" alt="Bear" width="106" height="118" /></a>
+				</li>
+				<li>
+					<a href="#"><img src="images/Bears_3.png" id="i5" alt="Bear" width="106" height="118" /></a>
+				</li>
+				<li>
+					<a href="#"><img src="images/Bears_4.png" id="i6" alt="Bear" width="106" height="118" /></a>
+				</li>
+				<li>
+					<a href="#"><img src="images/cat1.png" id="i7" alt="cat" width="106" height="118" /></a>
+				</li>
+				<li>
+					<a href="#"><img src="images/cat2.png" id="i8" alt="cat" width="106" height="118" /></a>
+				</li>
+
+				<li>
+					<a href="#"><img src="images/cat4.png" id="i10" alt="cat" width="106" height="118" /></a>
+				</li>
+				<li>
+					<a href="#"><img src="images/squirrels.png" id="i11" alt="squirrels" width="106" height="118" /></a>
+				</li>
+
+			</ul>
+
+		</div>
+
+		</div>
+		</div>
+
+		<!--container-->
+
+		<script>
+			$("#texts").keyup(function() {
+				var value = $(this).val();
+				$("p#textcount").text(value);
+				var fontid = $('#fontfam').val();
+				$("p#textcount").css("font-family", fontid);
+				var color = $('#colour').val();
+				$("p#textcount").css("color", color);
+			}).keyup();
+
+			$("#colour").change(function() {
+				var value = $('texts').val();
+				$("p#textcount").text(value);
+				var fontid = $('#fontfam').val();
+				$("p#textcount").css("font-family", fontid);
+				var color = $('#colour').val();
+				$("p#textcount").css("color", color);
+			}).keyup();
+
+			$("#fontfam").change(function() {
+				var value = $('texts').val();
+				$("p#textcount").text(value);
+				var fontid = $('#fontfam').val();
+				$("p#textcount").css("font-family", fontid);
+				var color = $('#colour').val();
+				$("p#textcount").css("color", color);
+			}).keyup();
+
+		</script>
+		<!--<footer>
+
+		<p>
+		Copyright © <a href="http://www.redeemsoftware.com">Redeem Software</a> 2012. All Rights Reserved
+		</p>
+
+		</footer>-->
+
+	</body>
+</html>

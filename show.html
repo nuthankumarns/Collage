@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+
+		<!-- Always force latest IE rendering engine (even in intranet) & Chrome Frame
+		Remove this if you use the .htaccess -->
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+
+		<title>show</title>
+		<meta name="description" content="" />
+		<meta name="author" content="Raj" />
+
+		<meta name="viewport" content="width=device-width; initial-scale=1.0" />
+		<script src="js/jquery.min.js"></script>
+		<!-- Replace favicon.ico & apple-touch-icon.png in the root of your domain and delete these references -->
+		<link rel="shortcut icon" href="/favicon.ico" />
+		<link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+		<style>
+			body {
+				height: 100%;
+				margin: 0;
+				padding: 0;
+				border: 0 none;
+			}
+			#left {
+				background-color: #EEEEEE;
+				height: 570px;
+				width: 100%;
+				float: left;
+			}
+
+			#right {
+				background-color: #D4EAE4;
+				float: left;
+				height: 570px;
+				margin: 0;
+			}
+
+		</style>
+		<script>
+			$(document).ready(function() {
+				$("#button").click(function() {
+					if ($(this).val() == "Hide") {
+						$(this).val("Show");
+						$("#left").animate({
+							width : '100%'
+						});
+						$("#right").animate({
+							width : '0px'
+						});
+					} else {
+						$(this).val("Hide");
+						$("#left").animate({
+							width : '70%'
+						});
+						$("#right").animate({
+							width : '30%'
+						});
+					}
+				});
+			});
+		</script>
+	</head>
+
+	<body>
+		<div id="left"><input type="button" id="button" value="Show"/></div>
+
+		<div id="right"></div>
+	</body>
+</html>
